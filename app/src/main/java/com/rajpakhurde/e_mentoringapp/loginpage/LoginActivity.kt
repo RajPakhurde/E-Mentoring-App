@@ -8,6 +8,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.rajpakhurde.e_mentoringapp.databinding.ActivitySigninBinding
+import com.rajpakhurde.e_mentoringapp.ui.DashBoardActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -45,6 +46,7 @@ class LoginActivity : AppCompatActivity() {
                         progressDialog.dismiss()
                         if (task.isSuccessful) {
                             Toast.makeText(this@LoginActivity,"Logged in", Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(this@LoginActivity,DashBoardActivity::class.java))
                         } else {
                             Toast.makeText(this@LoginActivity,task.exception?.message, Toast.LENGTH_SHORT).show()
                         }

@@ -53,4 +53,12 @@ dependencies {
     //Firebase Authentication
     implementation platform('com.google.firebase:firebase-bom:31.2.3')
     implementation 'com.google.firebase:firebase-auth-ktx'
+
+    //Agora sdk
+    implementation 'io.agora.rtc:full-sdk:4.0.1'
+    implementation ("commons-codec:commons-codec:1.9")
+
+    //material design
+    implementation 'com.google.android.material:material:1.9.0-alpha01'
+
 }

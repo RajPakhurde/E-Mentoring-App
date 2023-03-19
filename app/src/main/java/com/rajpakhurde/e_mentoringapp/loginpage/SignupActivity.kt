@@ -44,12 +44,17 @@ class SignupActivity : AppCompatActivity() {
 
                 if (fName.isBlank() || lName.isBlank() || email.isBlank() || password.isBlank() || cPassword.isBlank()) {
                     Toast.makeText(this@SignupActivity,"Please fill all fields", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                } else if (password != cPassword) {
+                    Toast.makeText(this@SignupActivity,"Confirm password and Password doesn't match...",Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
                 } else {
                     progressDialog.show()
                     auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener { task ->
                         progressDialog.dismiss()
                         if (task.isSuccessful) {
                             Toast.makeText(this@SignupActivity,"Account Created", Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(this@SignupActivity,LoginActivity::class.java))
                         } else {
                             Toast.makeText(this@SignupActivity,task.exception?.message, Toast.LENGTH_SHORT).show()
                         }
