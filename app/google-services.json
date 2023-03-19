@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "408042770160",
+    "project_id": "e-mentoring-android-app",
+    "storage_bucket": "e-mentoring-android-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408042770160:android:71ea3b03d3b8ef34bafc35",
+        "android_client_info": {
+          "package_name": "com.rajpakhurde.e_mentoringapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "408042770160-6o1pqa26lmr1inoi4n5scu8nhuvsg1rd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWtBdqeYiestQ1kxF9t2dxIO9sA1V-wfc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "408042770160-6o1pqa26lmr1inoi4n5scu8nhuvsg1rd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

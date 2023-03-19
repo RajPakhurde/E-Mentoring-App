@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import com.rajpakhurde.e_mentoringapp.loginpage.SigninActivity
+import com.rajpakhurde.e_mentoringapp.loginpage.LoginActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         Handler().postDelayed({
-            startActivity(Intent(this, SigninActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
         },2000)
     }
 }
