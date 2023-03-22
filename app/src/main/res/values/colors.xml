@@ -14,5 +14,12 @@
     <color name="purple">#A03392</color>
     <color name="form_card_bg">#F7F0E9</color>
     <color name="loginpage_text">#5A5A5A</color>
-    <color name="loginpage_button">#675B4F</color>
+
+
+    <color name="color1">#ebeafe</color>
+    <color name="color2">#9aaafe</color>
+    <color name="color3">#baa0fe</color>
+    <color name="color4">#c0baf4</color>
+    <color name="color5">#6c55cb</color>
+
 </resources>

@@ -64,7 +64,7 @@ class VideoCallingFragment : Fragment() {
         return !(ContextCompat.checkSelfPermission(requireContext(), REQUESTED_PERMISSION[0]) != PackageManager.PERMISSION_GRANTED ||
                 ContextCompat.checkSelfPermission(requireContext(), REQUESTED_PERMISSION[1]) != PackageManager.PERMISSION_GRANTED)
     }
-
+    
     private fun showMessage(message: String) {
         requireActivity().runOnUiThread {
             Toast.makeText(context,message, Toast.LENGTH_SHORT).show()
