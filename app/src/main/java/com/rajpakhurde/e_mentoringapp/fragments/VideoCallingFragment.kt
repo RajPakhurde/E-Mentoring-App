@@ -197,7 +197,7 @@ class VideoCallingFragment : Fragment() {
         agoraEngine!!.setupRemoteVideo(
             VideoCanvas(
                 remoteSufaceView,
-                VideoCanvas.RENDER_MODE_ADAPTIVE,
+                VideoCanvas.RENDER_MODE_HIDDEN,
                 uid
             )
         )
@@ -210,7 +210,7 @@ class VideoCallingFragment : Fragment() {
         agoraEngine!!.setupLocalVideo(
             VideoCanvas(
                 localSufaceView,
-                VideoCanvas.RENDER_MODE_ADAPTIVE,
+                VideoCanvas.RENDER_MODE_HIDDEN,
                 0
             )
         )
