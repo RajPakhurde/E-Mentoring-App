@@ -1,11 +1,24 @@
 package com.rajpakhurde.e_mentoringapp.fragments
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import com.bumptech.glide.Glide
+import com.bumptech.glide.disklrucache.DiskLruCache.Value
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.*
+import com.google.firebase.ktx.Firebase
 import com.rajpakhurde.e_mentoringapp.R
+import com.rajpakhurde.e_mentoringapp.data.DataClass
+import com.rajpakhurde.e_mentoringapp.databinding.FragmentProfileFragmentsBinding
+import com.rajpakhurde.e_mentoringapp.loginpage.LoginActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,13 +43,62 @@ class ProfileFragments : Fragment() {
         }
     }
 
+    private lateinit var binding: FragmentProfileFragmentsBinding
+    private lateinit var auth: FirebaseAuth
+    private lateinit var databaseReference: DatabaseReference
+    private lateinit var user: FirebaseUser
+    private lateinit var uid: String
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile_fragments, container, false)
+        binding = FragmentProfileFragmentsBinding.inflate(inflater,container,false)
+        return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val dbUsers = FirebaseDatabase.getInstance().getReference("User")
+
+        // In MyFragment:
+        val bundle = arguments
+        val email = bundle?.getString("email")
+
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setCancelable(false)
+        builder.setView(R.layout.progress_layout)
+        val dialog = builder.create()
+        dialog.show()
+
+        dbUsers.addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if(snapshot.exists()) {
+                    for (userdata in snapshot.children) {
+                        val user = userdata.getValue(DataClass::class.java)
+                        if (user?.email == email) {
+                            binding.userMode.text = user?.userMode
+                            binding.userName.text = user?.name
+                            Glide.with(requireContext()).load(user?.profileImage).into(binding.profileImage)
+                            dialog.dismiss()
+                        }
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                dialog.dismiss()
+            }
+        })
+
+        binding.btnLogout.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            startActivity(Intent(requireContext(),LoginActivity::class.java))
+        }
+    }
+
+
 
     companion object {
         /**

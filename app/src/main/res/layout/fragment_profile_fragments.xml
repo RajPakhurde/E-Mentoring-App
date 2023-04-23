@@ -6,21 +6,50 @@
     android:layout_height="match_parent"
     tools:context=".fragments.ProfileFragments">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/profileImage"
+            android:src="@drawable/baseline_person_24"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="40dp"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/roundedImageViewRounded"/>
+
 
         <TextView
+            android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Profile Fragment"
+            android:textStyle="bold"
             android:textSize="30sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.5" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/userMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:layout_marginTop="20dp"/>
+
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp"
+            android:backgroundTint="@color/white"
+            android:text="Log out"
+            android:textColor="@color/black"
+            app:cornerRadius="10dp" />
+    </LinearLayout>
 
 </FrameLayout>

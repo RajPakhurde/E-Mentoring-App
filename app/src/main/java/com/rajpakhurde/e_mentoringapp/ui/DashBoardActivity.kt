@@ -1,7 +1,8 @@
 package com.rajpakhurde.e_mentoringapp.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.rajpakhurde.e_mentoringapp.R
 import com.rajpakhurde.e_mentoringapp.databinding.ActivityDashBoardBinding
@@ -23,6 +24,13 @@ class DashBoardActivity : AppCompatActivity() {
         val searchFragment = SearchFragment()
         val chatFragment = ChatFragment()
         val videoFragment = VideoFragment()
+
+        val email = getIntent().getStringExtra("email")
+        Log.i("TAG","email = $email")
+
+        val bundle = Bundle()
+        bundle.putString("email", email)
+        profileFragment.setArguments(bundle)
 
         setCurrentFragment(profileFragment)
 

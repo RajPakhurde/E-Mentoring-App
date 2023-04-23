@@ -4,10 +4,12 @@ import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ProgressBar
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.rajpakhurde.e_mentoringapp.databinding.ActivitySigninBinding
+import com.rajpakhurde.e_mentoringapp.fragments.ProfileFragments
 import com.rajpakhurde.e_mentoringapp.ui.DashBoardActivity
 
 class LoginActivity : AppCompatActivity() {
@@ -33,6 +35,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
             btnLogin.setOnClickListener {
+                Log.i("TAG","Log in")
                 val email = etEmail.text.toString()
                 val password = etPassword.text.toString()
 
@@ -46,7 +49,10 @@ class LoginActivity : AppCompatActivity() {
                         progressDialog.dismiss()
                         if (task.isSuccessful) {
                             Toast.makeText(this@LoginActivity,"Logged in", Toast.LENGTH_SHORT).show()
-                            startActivity(Intent(this@LoginActivity,DashBoardActivity::class.java))
+                            val intent = Intent(this@LoginActivity,DashBoardActivity::class.java)
+                            intent.putExtra("email",email)
+                            startActivity(intent)
+
                         } else {
                             Toast.makeText(this@LoginActivity,task.exception?.message, Toast.LENGTH_SHORT).show()
                         }
